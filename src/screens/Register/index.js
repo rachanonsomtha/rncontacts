@@ -1,11 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View } from 'react-native';
+import RegisterComponent from '../../components/Signup';
 
 const Register = () => {
+    const [form, setForm] = useState({});
+    const [errors, setErrors] = useState({});
+
+    const onChange = ({ name, value }) => {
+        console.log(value)
+        setForm({ ...form, [name]: value, })
+    }
+
+    const onSubmit = () => {
+        //validations
+        console.log('form: >> ', form)
+        if (!form.userName) {
+            setErrors(prev => {
+                return { ...prev, userName: "Please add a username" }
+            })
+        }
+        if (!form.firstName) {
+            setErrors(prev => {
+                return { ...prev, firstName: "Please add a firstName" }
+            })
+        }
+        if (!form.lastName) {
+            setErrors(prev => {
+                return { ...prev, lastName: "Please add a lastName" }
+            })
+        }
+        if (!form.Email) {
+            setErrors(prev => {
+                return { ...prev, email: "Please add a Email" }
+            })
+        }
+        if (!form.password) {
+            setErrors(prev => {
+                return { ...prev, password: "Please add a password" }
+            })
+        }
+    }
+
     return (
-        <View>
-            <Text>Hi from Register</Text>
-        </View>
+        <RegisterComponent onSubmit={onSubmit} onChange={onChange} form={form} errors={errors} />
     )
 }
 

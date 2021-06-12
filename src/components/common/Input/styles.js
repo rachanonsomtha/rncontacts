@@ -19,6 +19,7 @@ export default StyleSheet.create({
         height: '100%',
     },
     error: {
+        color: colors.danger,
         paddingTop: 4,
         fontSize: 12,
     }

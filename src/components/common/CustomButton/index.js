@@ -28,6 +28,7 @@ const CustomButton = ({ title,
 
     return (
         <TouchableOpacity
+            onPress={onPress}
             disabled={disabled}
             style={[styles.wrapper, { backgroundColor: getBackgroundColor() }]}>
             <View style={[styles.loaderSection]}>
