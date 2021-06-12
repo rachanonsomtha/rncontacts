@@ -1,11 +1,9 @@
 import React from 'react'
-import { Text, View } from 'react-native';
+import LoginComponent from '../../components/Login';
 
 const Login = () => {
     return (
-        <View>
-            <Text>Hi from Login</Text>
-        </View>
+       <LoginComponent />
     )
 }
 

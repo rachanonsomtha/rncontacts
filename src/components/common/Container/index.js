@@ -1,6 +1,6 @@
-import { styles } from 'ansi-colors'
-import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import React from 'react';
+import { View, Text, ScrollView } from 'react-native';
+import styles from './styles';
 
 const Container = ({ children }) => {
     return (
