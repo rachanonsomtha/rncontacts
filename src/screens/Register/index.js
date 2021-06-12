@@ -9,6 +9,27 @@ const Register = () => {
     const onChange = ({ name, value }) => {
         console.log(value)
         setForm({ ...form, [name]: value, })
+        if (value != '') {
+            if (name === "password") {
+                if (value.length < 6) {
+                    setErrors((prev) => {
+                        return { ...prev, [name]: 'This field need minimun 6 charactors' }
+                    })
+                } else {
+                    setErrors((prev) => {
+                        return { ...prev, [name]: null }
+                    })
+                }
+            } else {
+                setErrors((prev) => {
+                    return { ...prev, [name]: null }
+                })
+            }
+        } else {
+            setErrors((prev) => {
+                return { ...prev, [name]: 'This field is required' }
+            })
+        }
     }
 
     const onSubmit = () => {
