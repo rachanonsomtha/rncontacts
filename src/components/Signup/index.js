@@ -9,7 +9,9 @@ import { LOGIN } from '../../constants/routeNames'
 const RegisterComponent = ({ onSubmit,
     onChange,
     form,
-    errors
+    errors,
+    error,
+    loading
 }) => {
 
     const { navigate } = useNavigation();
@@ -29,7 +31,7 @@ const RegisterComponent = ({ onSubmit,
                             onChangeText={(value) => {
                                 onChange({ name: "userName", value })
                             }}
-                            error={errors.userName}
+                            error={errors.userName || error?.username?.[0]}
                         />
                         <Input
                             label="First name"
@@ -38,7 +40,7 @@ const RegisterComponent = ({ onSubmit,
                             onChangeText={(value) => {
                                 onChange({ name: "firstName", value })
                             }}
-                            error={errors.firstName}
+                            error={errors.firstName || error?.first_name?.[0]}
                         />
                         <Input
                             label="Last name"
@@ -47,7 +49,7 @@ const RegisterComponent = ({ onSubmit,
                             onChangeText={(value) => {
                                 onChange({ name: "lastName", value })
                             }}
-                            error={errors.lastName}
+                            error={errors.lastName || error?.last_name?.[0]}
                         />
                         <Input
                             label="Email"
@@ -56,7 +58,7 @@ const RegisterComponent = ({ onSubmit,
                             onChangeText={(value) => {
                                 onChange({ name: "email", value })
                             }}
-                            error={errors.email}
+                            error={errors.email || error?.email?.[0]}
                         />
 
                         <Input
@@ -68,9 +70,11 @@ const RegisterComponent = ({ onSubmit,
                             onChangeText={(value) => {
                                 onChange({ name: "password", value })
                             }}
-                            error={errors.password}
+                            error={errors.password || error?.password?.[0]}
                         />
                         <CustomButton
+                            loading={loading}
+                            disabled={loading}
                             title="Submit"
                             primary
                             onPress={onSubmit}
